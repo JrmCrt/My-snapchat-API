@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Documentation</title>
+	<style type="text/css">
+	body {
+		background-color: rgba(65, 131, 215, 0.3);
+		color: rgba(65, 131, 215, 1);
+		font-size: 1.3em;
+		font-family: helvetica, arial;
+	}
+	.doc{
+		background-color: rgba(65, 131, 215, 1);
+		color: white;
+		font-size: 0.8em;
+	}
+	</style>
+</head>
+<body>
+<h2>Documentation Snapchat API</h2>
+<h3>TOUTES les réponses de l'API sont sous la forme d'un objet JSON :</h3>
+<pre class="doc">{
+error : , // false si pas d'erreur, sinon erreur écrite
+data : // un objet contenant les données demandées
+token : // pour la connexion seulement
+}
+</pre>
+<pre class="doc">
+========== Inscription ==========
+<strong>http://10.34.1.226/api?option=inscription</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'password' : *****}
+<strong>Renvoie si pas d'erreur : L'utilisateur courant</strong>
+</pre>
+<pre class="doc">
+========== Connexion ==========
+<strong>http://10.34.1.226/api?option=connexion</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'password' : *****}
+<strong>Renvoie si pas d'erreur : id et token de l'utilisateur connecté</strong>
+</pre>
+<pre class="doc">
+========== Liste des inscrits ==========
+<strong>http://10.34.1.226/api?option=toutlemonde</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<strong>Renvoie si pas d'erreur : id de tous les inscrits</strong>
+</pre>
+<pre class="doc">
+========== Envoie snap ==========
+<strong>http://10.34.1.226/api?option=image</strong>
+Envoyer en paramètre l'email de l'expediteur dans 'email', l'id du destinataire dans 'u2', la durée visible du snap dans 'temps' et le token d'authentification dans 'token';
+Envoyer post : {'email' : emailEnvoyeur, 'u2' : idRecever, 'temps': tempsSnap, 'token': AuthToken}
+Lors de l'envoie du fichier, oublier pas de mettre :
+fileKey = 'file', mimeType = 'image/jpeg';
+<strong>Renvoie si pas d'erreur : rien</strong>
+</pre>
+<pre class="doc">
+========== Récupérer vos snap ==========
+<strong>http://10.34.1.226/api?option=newsnap</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<strong>Renvoie si pas d'erreur : id du snap, id de l'expediteur, id du destinataire, image du snap, durée du snap</strong>
+</pre>
+<pre class="doc">
+========== Valider la vu d'un snap ==========
+<strong>http://10.34.1.226/api?option=vu</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id': idSnap}
+<strong>Renvoie si pas d'erreur : l'id du snap</strong>
+</pre>
+<pre class="doc">
+========== Changer votre mot de passe ==========
+<strong>http://10.34.1.226/api?option=changepassword</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'oldPassword': motDePasseActuel, 'password': nouveauMotDePasse}
+<strong>Renvoie si pas d'erreur : rien</strong>
+</pre>
+<pre class="doc">
+========== Récupérer les informations ==========
+<strong>http://10.34.1.226/api?option=userinfo</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id' : id de l'utilisateur}
+<strong>Renvoie si pas d'erreur : l'id et l'email de l'utilisateur</strong>
+</pre>
+<pre class="doc">
+========== Ajouter un ami ==========
+<strong>http://10.34.1.226/api?option=addfriend</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id' : id de l'ami}
+<strong>Renvoie si pas d'erreur : rien</strong>
+</pre>
+<pre class="doc">
+========== Accepter un ami ==========
+<strong>http://10.34.1.226/api?option=acceptfriend</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id' : id de l'ami à accepter}
+<strong>Renvoie si pas d'erreur : rien</strong>
+</pre>
+<pre class="doc">
+========== Supprimer un ami ==========
+<strong>http://10.34.1.226/api?option=removefriend</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken, 'id' : id de l'ami à supprimer}
+<strong>Renvoie si pas d'erreur : rien</strong>
+</pre>
+<pre class="doc">
+========== Recevoir les demandes d'amis ==========
+<strong>http://10.34.1.226/api?option=friendrequest</strong>
+Envoyer post : {'email' : nom@domaine.fr, 'token' : AuthToken}
+<strong>Renvoie si pas d'erreur : l'id des utilisateurs qui nous ont ajoutés</strong>
+</pre>
+</body>
+</html>

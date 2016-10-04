@@ -1,0 +1,8 @@
+<h1> test file </h1>
+
+<%= form_tag({action: :test}, multipart: true) do %>
+  <%= file_field_tag 'file' %>
+  <%= submit_tag %>
+<% end %>
+ 
+
